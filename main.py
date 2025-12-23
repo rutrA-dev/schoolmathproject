@@ -169,7 +169,14 @@ def finish_training():
     total = t["stats"]["total"]
     correct = t["stats"]["correct"]
     accuracy = round((correct / total) * 100, 1) if total > 0 else 0
-
+    if t["meta"]["difficulty"] == "random":
+        compl = "случайный"
+    else:
+        compl = t["current_task"]["complexity"]
+    if t["meta"]["type_code"] == "random":
+        typeru = "случайный"
+    else:
+        typeru = t["current_task"]["type_russian"]
     result = {
         "total": total,
         "correct": correct,
@@ -180,8 +187,8 @@ def finish_training():
         # ✅ ВОТ ЭТО ГЛАВНОЕ
         "type": t["meta"]["type_code"],
         "difficulty": t["meta"]["difficulty"],
-        "type_russian": t["current_task"]["type_russian"],
-        "complexity": t["current_task"]["complexity"]
+        "type_russian": typeru,
+        "complexity": compl
     }
 
     session["training_result"] = result
