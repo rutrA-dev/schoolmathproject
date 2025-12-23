@@ -1003,4 +1003,3 @@ def eq_generator(type, diff):
                                                  gen.generate_modulus(diff)
                                                  ])
 
-print(eq_generator("modulus", 3))
