@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Бесконечная тренировка — ProReshai</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ]
+            });
+        });
+    </script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_infinite_select.css') }}">
+</head>
+<body>
+<a href="/" class="mainbtn">На главную</a>
+<!-- как на training.html -->
+<div class="page">
+
+    <h1>Бесконечная тренировка</h1>
+    <div class="meta">
+        Выбери тип уравнений и сложность
+    </div>
+
+    <div class="cards">
+
+        <!-- СЛУЧАЙНЫЕ -->
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">Случайные</div>
+                <div class="card-hint">$$\text{random}$$</div>
+            </div>
+            <div class="difficulty">
+                <a href="/start_training?type=random&difficulty=1">1</a>
+                <a href="/start_training?type=random&difficulty=2">2</a>
+                <a href="/start_training?type=random&difficulty=3">3</a>
+                <a href="/start_training?type=random&difficulty=random">🎲</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">Квадратные</div>
+                <div class="card-hint">$$ax^2 + bx + c = 0$$</div>
+            </div>
+            <div class="difficulty">
+                <a href="/start_training?type=quadratic&difficulty=1">1</a>
+                <a href="/start_training?type=quadratic&difficulty=2">2</a>
+                <a href="/start_training?type=quadratic&difficulty=3">3</a>
+                <a href="/start_training?type=quadratic&difficulty=random">🎲</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">Биквадратные</div>
+                <div class="card-hint">$$x^4 + ax^2 + b = 0$$</div>
+            </div>
+            <div class="difficulty">
+                <a href="/start_training?type=biquadratic&difficulty=1">1</a>
+                <a href="/start_training?type=biquadratic&difficulty=2">2</a>
+                <a href="/start_training?type=biquadratic&difficulty=3">3</a>
+                <a href="/start_training?type=biquadratic&difficulty=random">🎲</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">Кубические</div>
+                <div class="card-hint">$$ax^3 + bx^2 + cx + d = 0$$</div>
+            </div>
+            <div class="difficulty">
+                <a href="/start_training?type=cubic&difficulty=1">1</a>
+                <a href="/start_training?type=cubic&difficulty=2">2</a>
+                <a href="/start_training?type=cubic&difficulty=3">3</a>
+                <a href="/start_training?type=cubic&difficulty=random">🎲</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">Высших степеней</div>
+                <div class="card-hint">$$x^n + a_{n-1}x^{n-1} + \dots = 0$$</div>
+            </div>
+            <div class="difficulty">
+                <a href="/start_training?type=higher&difficulty=1">1</a>
+                <a href="/start_training?type=higher&difficulty=2">2</a>
+                <a href="/start_training?type=higher&difficulty=3">3</a>
+                <a href="/start_training?type=higher&difficulty=random">🎲</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">Рациональные</div>
+                <div class="card-hint">$$\frac{P(x)}{Q(x)} = 0$$</div>
+            </div>
+            <div class="difficulty">
+                <a href="/start_training?type=rational&difficulty=1">1</a>
+                <a href="/start_training?type=rational&difficulty=2">2</a>
+                <a href="/start_training?type=rational&difficulty=3">3</a>
+                <a href="/start_training?type=rational&difficulty=random">🎲</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">Иррациональные</div>
+                <div class="card-hint">$$\sqrt{f(x)} = g(x)$$</div>
+            </div>
+            <div class="difficulty">
+                <a href="/start_training?type=irrational&difficulty=1">1</a>
+                <a href="/start_training?type=irrational&difficulty=2">2</a>
+                <a href="/start_training?type=irrational&difficulty=3">3</a>
+                <a href="/start_training?type=irrational&difficulty=random">🎲</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">Логарифмические</div>
+                <div class="card-hint">$$\log_a f(x) = \log_a g(x)$$</div>
+            </div>
+            <div class="difficulty">
+                <a href="/start_training?type=logarithmic&difficulty=1">1</a>
+                <a href="/start_training?type=logarithmic&difficulty=2">2</a>
+                <a href="/start_training?type=logarithmic&difficulty=3">3</a>
+                <a href="/start_training?type=logarithmic&difficulty=random">🎲</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">С модулем</div>
+                <div class="card-hint">$$|x - a| = b$$</div>
+            </div>
+            <div class="difficulty">
+                <a href="/start_training?type=modulus&difficulty=1">1</a>
+                <a href="/start_training?type=modulus&difficulty=2">2</a>
+                <a href="/start_training?type=modulus&difficulty=3">3</a>
+                <a href="/start_training?type=modulus&difficulty=random">🎲</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

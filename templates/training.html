@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тренировка — Math Notebook</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_training.css') }}">
+</head>
+<body>
+<a href="/" class="btn">На главную</a>
+<!-- МИНИ-СТАТИСТИКА -->
+<div class="stats">
+    <div>⏱ Время: <span id="time">00:00</span></div>
+    <div>🧮 Всего примеров: <span id="total">0</span></div>
+    <div>✔ Решено верно: <span id="solved">0</span></div>
+    <div>📊 Точность: <span id="accuracy">0%</span></div>
+    <button id="finish-btn" class="finish-btn">Завершить тренировку</button>
+</div>
+
+<div class="page">
+    <h1>Бесконечная тренировка</h1>
+
+    <div class="meta">
+        Тип: <b>{{eq_type_russian}}</b> · Сложность: <b>{{eq_complexity}}</b>
+    </div>
+
+    <div class="task-card" data-eq-type="{{ eq_type }}" data-difficulty="{{ eq_difficulty }}">
+
+        <div class="task" id="task">{{ eq_question }}</div>
+        <div class="meta">вводите корни через запятую</b></div>
+        <input type="text" id="user-answer" placeholder="Введите ваш ответ">
+        
+
+        <div class="buttons">
+            <button id="check-btn">Проверить</button>
+            <button id="next-btn" disabled>Дальше</button>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+</div>
+<footer>
+    © ProReshai • сделано для практики математики
+</footer>
+<script src="{{ url_for('static', filename='training.js') }}" defer></script>
+</body>
+</html>

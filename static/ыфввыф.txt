@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты тренировки — Math Notebook</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_training.css') }}">
+</head>
+<body>
+
+<div class="page">
+    <h1>Тренировка завершена</h1>
+    <div class="meta">
+            Тип: <b>{{ result.type_russian }}</b><br>
+            Сложность: <b>{{ result.complexity }}</b>
+    </div>
+    <div class="summary-card">
+        
+        
+        <div class="stats-grid">
+            <div class="stat big">
+                <span class="label">Точность</span>
+                <span class="value">{{ result.accuracy }}%</span>
+            </div>
+
+            <div class="stat">
+                <span class="label">Всего примеров</span>
+                <span class="value">{{ result.total }}</span>
+            </div>
+
+            <div class="stat">
+                <span class="label">Верных решений</span>
+                <span class="value">{{ result.correct }}</span>
+            </div>
+
+            <div class="stat">
+                <span class="label">Время</span>
+                <span class="value">
+                    {{ result.time // 60 }}м {{ result.time % 60 }}с
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h2>Краткий разбор</h2>
+
+        {% if result.total == 0 %}
+            <p>Вы не решили ни одного примера.</p>
+        {% elif result.accuracy == 100 %}
+            <p>Отличный результат. Все примеры решены верно.</p>
+        {% elif result.accuracy >= 70 %}
+            <p>Хорошая работа. Есть небольшие неточности.</p>
+        {% else %}
+            <p>Рекомендуется повторить тему и попробовать ещё раз.</p>
+        {% endif %}
+    </div>
+
+    <div class="actions">
+        <a href="/" class="btn">На главную</a>
+        <a href="/start_training?type={{ result.type }}&difficulty={{ result.difficulty }}" class="btn secondary">Начать заново</a>
+
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ProReshai — математика</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='mainpagestyles.css') }}">
+</head>
+<body>
+
+<div class="page">
+    <h1>ProReshai</h1>
+    <div class="subtitle">тренируйся • составляй варианты • думай как математик</div>
+
+    <div class="cards">
+
+        <!-- Бесконечная тренировка -->
+        <a class="card card-blue" href="/select">
+            <div class="card-title">Бесконечная тренировка</div>
+            <div class="card-text">
+                Решай уравнения без ограничений.<br>
+                Система сама подбирает примеры<br>
+                и считает твою статистику.
+            </div>
+            <div class="card-note">для практики</div>
+        </a>
+
+        <!-- Составление вариантов -->
+        <a class="card card-green" href="/teacher">
+            <div class="card-title">Составление вариантов</div>
+            <div class="card-text">
+                Создавай контрольные работы<br>
+                с несколькими вариантами,<br>
+                ответами и печатью.
+            </div>
+            <div class="card-note">для тестов</div>
+        </a>
+
+    </div>
+</div>
+
+<footer>
+    © ProReshai • понять. решить. закрепить
+</footer>
+
+</body>
+</html>
