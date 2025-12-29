@@ -1,6 +1,6 @@
 import random
 import re
-from sympy import symbols, expand, latex, Eq, Rational, sqrt, simplify, solve, log, Abs as sympy_abs, sin, cos, tan, pi, rad, deg, solve, S
+from sympy import symbols, expand, latex, Eq, Rational, sqrt, simplify, solve, log, Abs as sympy_abs, sin, cos, tan, pi, rad, deg, solve, S, Symbol
 class EquationGenerator:
     def __init__(self):
         self.x = symbols('x', real=True)
@@ -416,14 +416,14 @@ class EquationGenerator:
         elif d == 3: difficulty = random.choice([5,6])
         x = self.x
         
-        # Идея: (x - r1)(x - r2) / (x - r_forbidden) = 0
-        # Числитель дает корни, знаменатель создает ОДЗ
+        #(x - r1)(x - r2) / (x - r_forbidden) = 0
+
         
         roots = []
         forbidden_roots = []
         
-        # --- УРОВЕНЬ 1: Простейшие (Линейный числитель и знаменатель) ---
-        # Тип: (x - a) / (x - b) = 0. Корень один: a.
+        #УРОВЕНЬ 1: Простейшие (Линейный числитель и знаменатель)
+        # Тип: (x - a) / (x - b) = 0. Корень: a.
         if difficulty == 1:
             r1 = random.randint(-30, 30)
             forbidden = random.randint(-30, 30)
@@ -434,13 +434,13 @@ class EquationGenerator:
             denominator = x - forbidden
             roots = [r1]
 
-        # --- УРОВЕНЬ 2: Квадратный числитель, два целых корня ---
+        #УРОВЕНЬ 2: Квадратный числитель, два целых корня
         # Тип: (x^2 + bx + c) / (x - d) = 0
         elif difficulty == 2:
             r1 = random.randint(-10, 10)
             r2 = random.randint(-10, 10)
             forbidden = random.randint(-10, 10)
-            # Гарантируем, что ОДЗ не совпадает с корнями
+
             while forbidden in [r1, r2]:
                 forbidden = random.randint(-10, 10)
                 
@@ -448,7 +448,7 @@ class EquationGenerator:
             denominator = x - forbidden
             roots = [r1, r2]
 
-        # --- УРОВЕНЬ 4: Ловушка ОДЗ (один из корней числителя совпадает со знаменателем) ---
+        # --- УРОВЕНЬ 4: Ловушка ОДЗ (один из корней числителя совпадает со знаменателем)
         # Тип: (x - a)(x - b) / (x - a) = 0. Ответ только b.
         elif difficulty == 4:
             r1 = random.randint(-20, 20) # Корень, который "вылетит" по ОДЗ
@@ -799,20 +799,27 @@ class EquationGenerator:
 
         # --- УРОВЕНЬ 4: Метод замены (log_a x)^2 + ... ---
         elif difficulty == 4:
-            # t^2 - 3t + 2 = 0 => t=1, t=2
+            # Уравнение вида (log_base x)^2 + m(log_base x) + n = 0
             base = random.choice([2, 3, 4, 5])
-            t1 = random.randint(-2,3)
-            t2 = random.randint(-2,3)
-            #while t2 == t1: t2 = random.randint(1,5)
+            
+            # Генерируем степени, чтобы x был красивым (x = base^t)
+            t1 = random.randint(-4, 4)
+            t2 = random.randint(-4, 4)
+            
+            # Создаем временную переменную для SymPy, чтобы собрать красивое выражение
+            t = Symbol(rf'\log_{{{base}}} x') 
+            
+            # Формируем квадратное уравнение (t - t1)(t - t2) = 0
+            expr = expand((t - t1) * (t - t2))
+            
+            # Получаем чистый LaTeX с правильными знаками
+            latex_problem = rf"{latex(expr)} = 0"
+            
+            # Вычисляем реальные корни x
             r1, r2 = base**t1, base**t2
             
-            # (log x)^2 - (t1+t2)log x + t1*t2 = 0
-            m = -(t1 + t2)
-            n = t1 * t2
-            
-            latex_problem = rf"(\log_{{{base}}} x)^2 {m}\log_{{{base}}} x + {n} = 0"
-            if r1!=r2: roots = [float(r1), float(r2)]
-            else: roots = [float(r1)]
+            # Собираем список уникальных корней
+            roots = list(set([float(r1), float(r2)]))
 
         # --- УРОВЕНЬ 5:
         elif difficulty == 5:
@@ -1003,3 +1010,4 @@ def eq_generator(type, diff):
                                                  gen.generate_modulus(diff)
                                                  ])
 
+print(eq_generator("logarithmic", 2))
