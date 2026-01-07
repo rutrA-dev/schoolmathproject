@@ -1,50 +1,41 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ProReshai — математика</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+    </style>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='mainpagestyles.css') }}">
 </head>
 <body>
-
-<div class="page">
-    <h1>ProReshai</h1>
-    <div class="subtitle">тренируйся • составляй варианты • думай как математик</div>
-
-    <div class="cards">
-
-        <!-- Бесконечная тренировка -->
-        <a class="card card-blue" href="/select">
-            <div class="card-title">Бесконечная тренировка</div>
-            <div class="card-text">
+    <div class="page">
+        <h1>ProReshai</h1>
+        <div class="subtitle">тренируйся • составляй варианты • думай как математик</div>
+        <div class="cards">
+            <a class="card-blue" href="/select">
+                <div class="card-title">Бесконечная тренировка</div>
+                <div class="card-text">
                 Решай уравнения без ограничений.<br>
                 Система сама подбирает примеры<br>
                 и считает твою статистику.
-            </div>
-            <div class="card-note">для практики</div>
-        </a>
-
-        <!-- Составление вариантов -->
-        <a class="card card-green" href="/teacher">
-            <div class="card-title">Составление вариантов</div>
-            <div class="card-text">
+                </div>
+            </a>
+            <a class="card-green" href="/create">
+                <div class="card-title">Составление вариантов</div>
+                <div class="card-text">
                 Создавай контрольные работы<br>
                 с несколькими вариантами,<br>
                 ответами и печатью.
-            </div>
-            <div class="card-note">для тестов</div>
-        </a>
-
+                </div>
+            </a>
+        </div>
+        <footer>
+            © ProReshai • понять • решить • закрепить
+        </footer>
     </div>
-</div>
-
-<footer>
-    © ProReshai • понять. решить. закрепить
-</footer>
-
 </body>
 </html>
