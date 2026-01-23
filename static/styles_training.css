@@ -151,11 +151,11 @@ button:active {
 }
 
 .correct {
-    color: #1f7a1f;
+    color: #3eff3e;
 }
 
 .wrong {
-    color: #b30000;
+    color: #ff3535;
 }
 
 button:disabled {
