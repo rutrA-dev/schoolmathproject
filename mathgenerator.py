@@ -1009,5 +1009,3 @@ def eq_generator(type, diff):
                                                  gen.generate_logarithmic(diff),
                                                  gen.generate_modulus(diff)
                                                  ])
-
-print(eq_generator("logarithmic", 2))

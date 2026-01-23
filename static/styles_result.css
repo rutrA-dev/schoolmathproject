@@ -130,14 +130,13 @@ a {
     font-family: 'Patrick Hand', cursive;
     font-size: 18px;
     padding: 6px 14px;
-    background: #fff;
-    border: 2px solid #333;
+    border: 1px solid #ffffff;
     border-radius: 8px;
     cursor: pointer;
     box-shadow: 2px 2px 0 #000;
     transition: transform 0.1s ease, box-shadow 0.1s ease;
     text-decoration: none;
-    color: #000;
+    color: #ffffff;
 }
 
 footer {
